@@ -90,10 +90,10 @@ def mars_facts():
         df = pd.read_html('https://galaxyfacts-mars.com')[0]
     except BaseException:
         return None
-    df.columns=['description', 'Mars', 'Earth']
-    df.set_index('description', inplace=True)
+    df.columns=['Description', 'Mars', 'Earth']
+    df.set_index('Description', inplace=True)
 
-    return df.to_html()
+    return df.to_html().replace("dataframe", "table table-hover table-striped")
 
 def mars_hemispheres(browser):
 

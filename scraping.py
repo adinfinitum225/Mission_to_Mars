@@ -25,7 +25,8 @@ def scrape_all():
             'news_paragraph': news_paragraph,
             'featured_image': featured_image(browser),
             'facts': mars_facts(),
-            'last_modified': dt.datetime.now()
+            'last_modified': dt.datetime.now(),
+            'hemispheres': mars_hemispheres()
             }
 
     # Stop webdriver and return data
@@ -93,6 +94,8 @@ def mars_facts():
     df.set_index('description', inplace=True)
 
     return df.to_html()
+
+def mars_hemispheres():
 
 if __name__ == '__main__':
     # If running as script, print scraped data

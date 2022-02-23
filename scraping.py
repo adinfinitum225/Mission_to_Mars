@@ -13,8 +13,13 @@ import datetime as dt
 def scrape_all():
 
     # Set up Splinter
-    executable_path = {'executable_path': GeckoDriverManager().install()}
-    browser = Browser('firefox', **executable_path, headless=True)
+    try:
+        executable_path = {'executable_path': GeckoDriverManager().install()}
+        browser = Browser('firefox', **executable_path, headless=False)
+    except WebDriverException:
+        executable_path = {'executable_path': ChromeDriverManager().install()}
+        browser = Browser('chrome', **executable_path, headless=False)
+    
 
     # Set news title and paragraph variables
     news_title, news_paragraph = mars_news(browser)
